@@ -10,6 +10,7 @@ A modern professional portfolio developed with React, Vite, Tailwind CSS and Fra
 - **Performance**: Built with Vite for fast development and optimized builds
 - **Accessible**: Implemented with accessibility best practices
 - **SEO Optimized**: Meta tags and structure optimized for search engines
+- **PWA Ready**: Progressive Web App with service worker and manifest
 
 ## 🛠️ Technologies
 
@@ -19,13 +20,14 @@ A modern professional portfolio developed with React, Vite, Tailwind CSS and Fra
 - **Framer Motion** - Animation library for React
 - **Lucide React** - Modern icons
 - **React Intersection Observer** - Scroll detection for animations
+- **Vite PWA Plugin** - Progressive Web App functionality
 
 ## 📦 Installation
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd portfolio-v2
+   git clone https://github.com/ItalloVasconcelos/portfolio-V2.git
+   cd portfolio-V2
    ```
 
 2. **Install dependencies**
@@ -70,12 +72,27 @@ Add your project images to the `public/` folder and update the paths in `src/dat
 - **Hero/Sidebar**: Initial presentation with navigation
 - **About**: Personal and professional information
 - **Experience**: Professional history with details
+- **Skills**: Technical skills organized by category
 - **Projects**: Showcase of completed projects
 - **Contact**: Ways to get in touch
 
 ## 🚀 Deploy
 
-### Production Build
+### Vercel Deploy (Recommended)
+
+1. **Push to GitHub**
+   ```bash
+   git add .
+   git commit -m "Ready for deploy"
+   git push origin main
+   ```
+
+2. **Connect to Vercel**
+   - Go to [vercel.com](https://vercel.com)
+   - Import your GitHub repository
+   - Deploy automatically with zero configuration
+
+### Build for Production
 
 ```bash
 npm run build
@@ -87,9 +104,8 @@ npm run build
 npm run preview
 ```
 
-### Deploy Options
+### Other Deploy Options
 
-- **Vercel**: Connect your repository for automatic deployment
 - **Netlify**: Direct Git deployment with automatic builds
 - **GitHub Pages**: Use GitHub Actions workflow
 - **Firebase Hosting**: For Google Cloud hosting
@@ -100,6 +116,26 @@ npm run preview
 - `npm run build` - Creates the production build
 - `npm run preview` - Previews the production build
 - `npm run lint` - Runs the code linter
+- `npm run vercel-build` - Build command for Vercel
+
+## 🔧 Project Structure
+
+```
+portfolio-V2/
+├── public/
+│   ├── manifest.json      # PWA manifest
+│   ├── robots.txt         # SEO robots file
+│   └── _redirects         # Netlify redirects
+├── src/
+│   ├── components/        # React components
+│   ├── data/             # Portfolio data
+│   ├── App.jsx           # Main app component
+│   ├── main.jsx          # Entry point
+│   └── index.css         # Global styles
+├── vercel.json           # Vercel configuration
+├── vite.config.js        # Vite configuration
+└── tailwind.config.js    # Tailwind configuration
+```
 
 ## 🤝 Contributing
 
@@ -121,6 +157,10 @@ This project is under the MIT license. See the `LICENSE` file for more details.
 - Consider adding Google Analytics for metrics
 - Implement a blog if you want to share knowledge
 
+## 🌟 Live Demo
+
+Visit the live portfolio at: [https://itallosaviodev.com](https://itallosaviodev.com)
+
 ---
 
-Built with ❤️ using React and Tailwind CSS 
+Built with ❤️ using React and Tailwind CSS
