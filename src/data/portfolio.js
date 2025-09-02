@@ -1,10 +1,7 @@
 export const personalInfo = {
   name: "Itallo Savio",
   title: "Frontend Developer",
-  description: `Frontend Developer with 4 years of experience and a strong bias towards Design and UX, 
-    passionate about transforming ideas into digital products that are both functional and creative. 
-    I seek a remote opportunity that challenges me to unite creativity and technical excellence 
-    to build memorable solutions.`,
+  description: `Building scalable, tested and secure front-ends — for the real world.`,
   
   currentRole: {
     position: "Software Engineer",
@@ -105,7 +102,8 @@ export const projects = [
     image: "/project1.jpg",
     technologies: ["React", "TypeScript", "SCSS", "Figma", "Jest", "REST API"],
     links: {
-      live: "https://kosen.energy"
+      live: "https://kosen.energy",
+      github: "https://github.com/ItalloVasconcelos/kosen-energy"
     },
     featured: true
   },
@@ -118,7 +116,8 @@ export const projects = [
     image: "/project2.jpg", 
     technologies: ["React", "TypeScript", "SCSS", "Keycloak", "Storybook"],
     links: {
-      live: "https://bananacloud.com"
+      live: "https://bananacloud.com",
+      github: "https://github.com/ItalloVasconcelos/bananacloud"
     },
     featured: true
   },
@@ -130,7 +129,9 @@ export const projects = [
       with Redux, and comprehensive API documentation.`,
     image: "/project3.jpg",
     technologies: ["React", "TypeScript", "Bootstrap", "Redux", "Swagger"],
-    links: {},
+    links: {
+      github: "https://github.com/ItalloVasconcelos/ifce-intranet"
+    },
     featured: false
   },
   {
@@ -141,7 +142,9 @@ export const projects = [
       modern interface design.`,
     image: "/project4.jpg",
     technologies: ["React", "Ionic", "PHP", "MFA", "Figma"],
-    links: {},
+    links: {
+      github: "https://github.com/ItalloVasconcelos/lottery-platform"
+    },
     featured: false
   },
   {

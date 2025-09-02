@@ -6,6 +6,7 @@ const Sidebar = ({ activeSection, onNavigate }) => {
   const menuItems = [
     { id: 'about', label: 'ABOUT' },
     { id: 'experience', label: 'EXPERIENCE' },
+    { id: 'skills', label: 'SKILLS' },
     { id: 'projects', label: 'PROJECTS' },
     { id: 'contact', label: 'CONTACT' }
   ]
@@ -29,7 +30,7 @@ const Sidebar = ({ activeSection, onNavigate }) => {
           <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-white">
             {personalInfo.name}
           </h1>
-          <h2 className="text-xl lg:text-2xl text-primary-400 font-medium mt-2">
+          <h2 className="text-xl lg:text-2xl text-primary-400 font-medium mt-2 typewriter">
             {personalInfo.title}
           </h2>
           <p className="text-secondary-300 mt-4 text-lg lg:text-xl leading-relaxed">
@@ -48,7 +49,7 @@ const Sidebar = ({ activeSection, onNavigate }) => {
             <button
               key={item.id}
               onClick={() => onNavigate(item.id)}
-              className={`block w-full text-left group transition-all duration-300 ${
+              className={`block w-full text-left group transition-all duration-300 hover:transform hover:translate-x-2 ${
                 activeSection === item.id
                   ? 'text-primary-400'
                   : 'text-secondary-400 hover:text-white'
@@ -86,7 +87,7 @@ const Sidebar = ({ activeSection, onNavigate }) => {
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-secondary-400 hover:text-primary-400 transition-colors duration-300"
+              className="text-secondary-400 hover:text-primary-400 transition-all duration-300 hover:transform hover:scale-110"
               aria-label={social.label}
             >
               <Icon size={24} />

@@ -25,14 +25,6 @@ const Contact = () => {
       action: 'Connect',
       href: personalInfo.social.linkedin,
       highlight: false
-    },
-    {
-      icon: Coffee,
-      title: 'Virtual Coffee',
-      description: 'How about a casual conversation?',
-      action: 'Schedule',
-      href: '#calendly', // Placeholder for calendar booking
-      highlight: false
     }
   ]
 
@@ -40,7 +32,7 @@ const Contact = () => {
     <section
       id="contact"
       ref={ref}
-      className="min-h-screen flex items-center section-padding py-16 lg:py-24"
+      className="min-h-screen flex items-center section-padding py-12 lg:py-16"
     >
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -68,7 +60,7 @@ const Contact = () => {
         </div>
 
         {/* Contact Options */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
           {contactOptions.map((option, index) => {
             const Icon = option.icon
             return (

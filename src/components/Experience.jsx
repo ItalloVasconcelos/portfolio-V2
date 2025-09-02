@@ -14,6 +14,7 @@ const ExperienceCard = ({ exp, index }) => {
       ref={ref}
       initial={{ opacity: 0, y: 50 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      whileHover={{ scale: 1.02, boxShadow: '0 0 15px rgba(34, 197, 94, 0.15)' }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       className="group relative"
     >
@@ -79,7 +80,7 @@ const Experience = () => {
     <section
       id="experience"
       ref={ref}
-      className="min-h-screen section-padding py-16 lg:py-24"
+      className="min-h-screen section-padding py-12 lg:py-16"
     >
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -100,11 +101,32 @@ const Experience = () => {
         </div>
 
         {/* Experience Cards */}
-        <div className="space-y-8">
+        <motion.div 
+          className="space-y-8"
+          variants={{
+            hidden: { opacity: 0 },
+            show: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.2
+              }
+            }
+          }}
+          initial="hidden"
+          animate={inView ? "show" : "hidden"}
+        >
           {experience.map((exp, index) => (
-            <ExperienceCard key={exp.id} exp={exp} index={index} />
+            <motion.div
+              key={exp.id}
+              variants={{
+                hidden: { opacity: 0, x: -50 },
+                show: { opacity: 1, x: 0 }
+              }}
+            >
+              <ExperienceCard exp={exp} index={index} />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Call to Action */}
         <motion.div

@@ -8,7 +8,7 @@ const Hero = ({ onMobileMenuToggle }) => {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="section-padding py-6 border-b border-secondary-800"
+      className="section-padding py-4 border-b border-secondary-800"
     >
       <div className="flex items-center justify-between">
         <div>

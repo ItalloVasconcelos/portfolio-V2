@@ -14,6 +14,7 @@ const ProjectCard = ({ project, index }) => {
       ref={ref}
       initial={{ opacity: 0, y: 50 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      whileHover={{ scale: 1.02, boxShadow: '0 0 15px rgba(34, 197, 94, 0.15)' }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       className={`group relative ${
         project.featured ? 'lg:col-span-2' : ''
@@ -95,40 +96,49 @@ const ProjectCard = ({ project, index }) => {
             ))}
           </div>
 
-          {/* Links */}
-          <div className="flex items-center space-x-4 text-sm">
-            {project.links.demo && (
-              <a
-                href={project.links.demo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-1 text-primary-400 hover:text-primary-300 transition-colors duration-300"
-              >
-                <Play size={14} />
-                <span>Demo</span>
-              </a>
-            )}
-            {project.links.github && (
-              <a
-                href={project.links.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-1 text-secondary-400 hover:text-white transition-colors duration-300"
-              >
-                <Github size={14} />
-                <span>Code</span>
-              </a>
-            )}
+          {/* Action Buttons */}
+          <div className="flex items-center space-x-4 flex-wrap">
             {project.links.live && (
-              <a
+              <motion.a
                 href={project.links.live}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center space-x-1 text-secondary-400 hover:text-white transition-colors duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center space-x-2 px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white font-medium rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg"
               >
-                <ExternalLink size={14} />
-                <span>Site</span>
-              </a>
+                <ExternalLink size={16} />
+                <span>View Site</span>
+              </motion.a>
+            )}
+            {project.links.github && (
+              <motion.a
+                href={project.links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center space-x-2 px-4 py-2 bg-secondary-700 hover:bg-secondary-600 text-white font-medium rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg"
+              >
+                <Github size={16} />
+                <span>View Code</span>
+              </motion.a>
+            )}
+            {project.links.demo && (
+              <motion.a
+                href={project.links.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center space-x-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg"
+              >
+                <Play size={16} />
+                <span>Demo</span>
+              </motion.a>
+            )}
+            {!project.links.live && !project.links.github && !project.links.demo && (
+              <span className="text-secondary-400 text-sm italic">Project under development</span>
             )}
           </div>
         </div>
@@ -150,7 +160,7 @@ const Projects = () => {
     <section
       id="projects"
       ref={ref}
-      className="min-h-screen section-padding py-16 lg:py-24"
+      className="min-h-screen section-padding py-12 lg:py-16"
     >
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -171,11 +181,32 @@ const Projects = () => {
         </div>
 
         {/* Featured Projects */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+        <motion.div 
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16"
+          variants={{
+            hidden: { opacity: 0 },
+            show: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.3
+              }
+            }
+          }}
+          initial="hidden"
+          animate={inView ? "show" : "hidden"}
+        >
           {featuredProjects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
+            <motion.div
+              key={project.id}
+              variants={{
+                hidden: { opacity: 0, y: 60, rotateX: -15 },
+                show: { opacity: 1, y: 0, rotateX: 0 }
+              }}
+            >
+              <ProjectCard project={project} index={index} />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Other Projects */}
         {otherProjects.length > 0 && (

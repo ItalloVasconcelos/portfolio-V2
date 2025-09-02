@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { personalInfo } from '../data/portfolio'
 
@@ -8,17 +8,31 @@ const About = () => {
     triggerOnce: true
   })
 
+  const { scrollY } = useScroll()
+  const y1 = useTransform(scrollY, [0, 300], [0, 50])
+  const y2 = useTransform(scrollY, [0, 300], [0, -50])
+
   return (
     <section
       id="about"
       ref={ref}
-      className="min-h-screen flex items-center section-padding py-16 lg:py-24"
+      className="min-h-screen flex items-center section-padding py-12 lg:py-16 relative overflow-hidden"
     >
+      {/* Floating background elements */}
+      <motion.div 
+        style={{ y: y1 }}
+        className="absolute top-20 right-20 w-32 h-32 bg-primary-500/5 rounded-full blur-xl"
+      />
+      <motion.div 
+        style={{ y: y2 }}
+        className="absolute bottom-20 left-20 w-24 h-24 bg-primary-400/10 rounded-full blur-lg"
+      />
+      
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="max-w-3xl"
+        className="max-w-3xl relative z-10"
       >
         {/* Header */}
         <div className="mb-12">
@@ -34,41 +48,38 @@ const About = () => {
             {personalInfo.description}
           </p>
 
-          <p>
-            {personalInfo.currentRole.description}
-          </p>
 
           <p>
-            My professional journey is marked by continuous evolution. At Versatus HPC, 
-            where I've been working for three years, I grew from a junior developer on 
-            the BananaCloud project to a key piece in developing{' '}
+            My professional journey is defined by consistent growth and hands-on impact. At Versatus HPC,
+            where I've worked for three years, I evolved from a junior developer on the BananaCloud project
+            to leading the front-end efforts of{' '}
             <span className="text-primary-400 font-medium">
               Kosen Energy (ACL)
             </span>
-            . In this project, I had the unique opportunity to lead the Design front, 
-            creating prototypes and the visual identity of the system.
+            . I owned the UI architecture, built the MVP with React and TypeScript, created the design system
+            with Storybook, and implemented key features using solid, testable code.
           </p>
 
           <p>
-            My technical foundation was solidified at{' '}
+            My technical foundation was shaped at{' '}
             <span className="text-primary-400 font-medium">
               IFCE
             </span>
-            , where I developed a React system for the NDS sector that remains in use today - 
-            a testament to the impact and quality of my work. As a freelancer, I honed my 
-            backend skills (Node.js, GraphQL) and generated high-impact results, such as 
-            the complete design and frontend restructuring of the Orthomovi website.
+            , where I built a React system for the NDS sector that’s still in production — a proof of
+            maintainable, real-world code. As a freelancer, I led the complete frontend redesign of the
+            Orthomovi website and contributed to the backend using Node.js and GraphQL, delivering fast
+            and measurable results.
           </p>
 
           <p>
-            I believe the best technology is one that serves a creative and functional experience. 
-            If you're looking for a professional who moves fluidly between design and code to 
-            create{' '}
+            I believe great frontend is more than visuals — it’s fast, scalable, and built with purpose.
+            If you're looking for someone who moves confidently between{' '}
             <span className="text-primary-400 font-medium">
-              high-level solutions
+              clean code and great UX
             </span>
-            , let's talk.
+            , let’s talk.
           </p>
+
         </div>
 
         {/* Current Role Highlight */}
